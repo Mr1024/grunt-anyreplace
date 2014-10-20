@@ -33,7 +33,7 @@ module.exports = function(grunt) {
         this.files.forEach(function(filePair) {
             isExpandedPair = filePair.orig.expand || false;
             if (filePair.src.length == 0) {
-                grunt.log.warn('Source file not found.');
+                grunt.log.warn('Source file not found because src files were empty.');
             }
             filePair.src.forEach(function(src) {
                 if (detectDestType(filePair.dest) === 'directory') {
@@ -111,7 +111,10 @@ module.exports = function(grunt) {
         function replaceText(settings) {
             var text = settings.text;
             var from = convertPatternToRegex(settings.from);
+            console.log(from);
             var to = expandReplacement(settings.to);
+            console.log(to);
+            console.log(text.replace(from, to));
             return text.replace(from, to);
         };
 

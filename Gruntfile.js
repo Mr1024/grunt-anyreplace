@@ -17,19 +17,16 @@ module.exports = function(grunt) {
                 options: {
                     timestamp: true,
                     replacements: [{
-                        from: '.css',
-                        to: '.min.css'
+                        from: /(<link.*href=['"].*)(?!\.min)(?=\.css)/g,
+                        to: '$1.min'
                     }]
                 },
-                src: ['test/source/*.html'],
-                dest: 'test/build/'
-                    //files: [{
-                    //    expand: true,
-                    // cwd: 'build/',
-                    // src: ['**/
-                    // * .html '],
-                    // dest: 'build'
-                    // }]
+                files: [{
+                    expand: true,
+                    cwd: 'test/source/',
+                    src: ['**/*.html'],
+                    dest: 'test/build/'
+                }]
             }
         }
 
