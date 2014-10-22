@@ -17,8 +17,11 @@ module.exports = function(grunt) {
                 options: {
                     timestamp: true,
                     replacements: [{
-                        from: /(<link.*href=['"].*)(?!\.min)(?=\.css)/g,
-                        to: '$1.min'
+                        from: /(<link\b.*?href=(['"]?))((?:(?!\.min)[^'"\s>])+)(?=\.css\2)/g,
+                        to: '$1$3.min'
+                    }, {
+                        from: /(<script\b.*?src=(['"]?))((?:(?!\.min)[^'"\s>])+)(?=\.js\2)/g,
+                        to: '$1$3.min'
                     }]
                 },
                 files: [{

@@ -113,7 +113,6 @@ module.exports = function(grunt) {
             var from = convertPatternToRegex(settings.from);
             console.log(from);
             var to = expandReplacement(settings.to);
-            console.log(to);
             console.log(text.replace(from, to));
             return text.replace(from, to);
         };
