@@ -32,7 +32,7 @@ module.exports = function(grunt) {
         // Iterate over all specified file groups.
         this.files.forEach(function(filePair) {
             isExpandedPair = filePair.orig.expand || false;
-            if (filePair.src.length == 0) {
+            if (filePair.src.length === 0) {
                 grunt.log.warn('Source file not found because src files were empty.');
             }
             filePair.src.forEach(function(src) {
@@ -71,7 +71,7 @@ module.exports = function(grunt) {
             } else {
                 return 'file';
             }
-        };
+        }
 
         function unixifyPath(filepath) {
             if (process.platform === 'win32') {
@@ -79,13 +79,13 @@ module.exports = function(grunt) {
             } else {
                 return filepath;
             }
-        };
+        }
 
         function md5(src) {
             var md5Hash = crypto.createHash('md5');
             md5Hash.update(fs.readFileSync(src));
             return md5Hash.digest('hex');
-        };
+        }
 
         function syncTimestamp(src, dest) {
             var stat = fs.lstatSync(src);
@@ -96,7 +96,7 @@ module.exports = function(grunt) {
                 return;
             }
             fs.utimesSync(dest, stat.atime, stat.mtime);
-        };
+        }
 
         function replaceTextMultiple(text, replacements) {
             return replacements.reduce(function(newText, replacement) {
@@ -106,7 +106,7 @@ module.exports = function(grunt) {
                     to: replacement.to
                 });
             }, text);
-        };
+        }
 
         function replaceText(settings) {
             var text = settings.text;
@@ -115,7 +115,7 @@ module.exports = function(grunt) {
             var to = expandReplacement(settings.to);
             console.log(text.replace(from, to));
             return text.replace(from, to);
-        };
+        }
 
         function convertPatternToRegex(pattern) {
             var regexCharacters = '\\[](){}^$-.*+?|,/';
@@ -127,7 +127,7 @@ module.exports = function(grunt) {
                 pattern = new RegExp(pattern, 'g');
             }
             return pattern;
-        };
+        }
 
         function expandReplacement(replacement) {
             if (typeof replacement === 'function') {
@@ -137,7 +137,7 @@ module.exports = function(grunt) {
             } else {
                 return expandNonStringReplacement(replacement);
             }
-        };
+        }
 
         function expandFunctionReplacement(replacement) {
             return function() {
@@ -150,16 +150,16 @@ module.exports = function(grunt) {
                     regexMatches);
                 return (typeof returnValue === 'string') ? processGruntTemplate(returnValue) : expandNonStringReplacement(returnValue);
             };
-        };
+        }
 
         function expandStringReplacement(replacement) {
             return processGruntTemplate(replacement);
-        };
+        }
 
         function expandNonStringReplacement(replacement) {
             var isReplacementNullOrUndefined = (typeof replacement === 'undefined') || (replacement === null);
             return isReplacementNullOrUndefined ? '' : String(replacement);
-        };
+        }
 
         function processGruntTemplate(string) {
             var isProcessTemplateTrue = true;
@@ -167,7 +167,7 @@ module.exports = function(grunt) {
                 isProcessTemplateTrue = false;
             }
             return isProcessTemplateTrue ? grunt.template.process(string) : string;
-        };
+        }
 
 
 
