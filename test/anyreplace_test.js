@@ -30,7 +30,7 @@ exports.anyreplace = {
     js: function(test) {
         test.expect(1);
 
-        var actual = grunt.file.read('test/build/testjs.html');
+        var actual = grunt.file.read('test/build/js/test.html');
         var expected = grunt.file.read('test/expected/testjs.html');
         test.equal(actual, expected, 'should describe what the default behavior is.');
 
@@ -39,7 +39,7 @@ exports.anyreplace = {
     css: function(test) {
         test.expect(1);
 
-        var actual = grunt.file.read('test/build/testcss.html');
+        var actual = grunt.file.read('test/build/css/test.html');
         var expected = grunt.file.read('test/expected/testcss.html');
         test.equal(actual, expected, 'should describe what the custom option(s) behavior is.');
 

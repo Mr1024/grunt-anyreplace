@@ -42,7 +42,7 @@ module.exports = function(grunt) {
                     expand: true,
                     cwd: 'test/source/',
                     src: ['**/*.html'],
-                    dest: 'test/build/testjs.html'
+                    dest: 'test/build/js/'
                 }]
             },
             css: {
@@ -55,9 +55,9 @@ module.exports = function(grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'test/source/test.html',
+                    cwd: 'test/source/',
                     src: ['**/*.html'],
-                    dest: 'test/build/testcss.html'
+                    dest: 'test/build/css/'
                 }]
             }
         },
