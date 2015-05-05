@@ -104,24 +104,26 @@ In this example,replaces references from non-optimized scripts, stylesheets and 
 
 ```js
 grunt.initConfig({
-  anyreplace: {
-     options: {
-              timestamp: true,
-              replacements: [{
-                  from: /(<link(?:(?!href=).)*href=(['"]?)(?:(?!min\.css\2).)*)(?=.css\2)/g,
-                  to: '$1.min'
-              }, {
-                  from: /(<script(?:(?!src=).)*src=(['"]?)(?:(?!min\.js\2\/?>).)*)(?=\.js\2\/?>)/g,
-                  to: '$1-min'
-              }]
-          },
-          files: [{
-              expand: true,
-              cwd: 'source/',
-              src: ['**/*.html'],
-              dest: 'build/'
-          }]
-  },
+   anyreplace: {
+        usemin: {
+            options: {
+                timestamp: true,
+                replacements: [{
+                    from: /(<link(?:(?!href=).)*href=(['"]?)(?:(?!min\.css\2).)*)(?=.css\2)/g,
+                    to: '$1.min'
+                }, {
+                    from: /(<script(?:(?!src=).)*src=(['"]?)(?:(?!min\.js\2\/?>).)*)(?=\.js\2\/?>)/g,
+                    to: '$1-min'
+                }]
+            },
+            files: [{
+                expand: true,
+                cwd: 'source/',
+                src: ['**/*.html'],
+                dest: 'build/'
+            }]
+        }
+    }
 });
 ```
 

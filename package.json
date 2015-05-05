@@ -1,7 +1,7 @@
 {
   "name": "grunt-anyreplace",
   "description": "Replace text in files using strings, regular expressions or functions.I used to replace references from non-optimized scripts, stylesheets and other assets to their optimized version within a set of HTML files.",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/Mr1024/grunt-anyreplace",
   "author": {
     "name": "Mr1024",
